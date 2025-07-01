@@ -1,4 +1,3 @@
-````markdown name=Project.md
 ---
 
 # Guinness World Records Search Engine
@@ -14,13 +13,18 @@
 7. [Document Scoring](#7-document-scoring)
 8. [Ranking and Retrieving Results](#8-ranking-and-retrieving-results)
 9. [Full Search Workflow Example](#9-full-search-workflow-example)
-10. [Real Input and Output Example](#10-real-input-and-output-example)
 
 ---
 
 ## 1. Introduction
 
-This notebook demonstrates building a simple search engine for Guinness World Records Instagram posts. We will load the dataset, preprocess the text, compute TF-IDF scores, and retrieve the most relevant documents for a user query.
+This notebook demonstrates building a simple search engine for Guinness World Records Instagram posts.  
+We will:
+
+- Load the dataset
+- Preprocess the text
+- Compute TF-IDF scores
+- Retrieve the most relevant records for a user query
 
 ---
 
@@ -34,7 +38,7 @@ To begin, extract the dataset using the following command:
 !unzip guinnessWorldRecords.zip
 ```
 
-The above command will decompress the folder and make the records available for processing.
+This command decompresses the folder and makes the records available for processing.
 
 ---
 
@@ -72,12 +76,13 @@ print("Output:", docs[:2])  # Show only first 2 for brevity
 ## 4. Text Preprocessing
 
 We will preprocess the text using the following steps:
+
 - Convert to lowercase
 - Remove punctuation
 - Tokenize (using `WordPunctTokenizer`)
 - Remove English stopwords
-- Apply stemming (PorterStemmer)
-- Apply lemmatization (WordNetLemmatizer)
+- Apply stemming (`PorterStemmer`)
+- Apply lemmatization (`WordNetLemmatizer`)
 
 ```python
 import string
@@ -229,59 +234,3 @@ for idx, res in enumerate(top_results, 1):
 ```
 
 ---
-
-## 10. Real Input and Output Example
-
-Below is a real example of running the search engine end-to-end.
-
-**Suppose these are three sample documents in your dataset:**
-
-```python
-docs = [
-    "Zeus is the tallest dog in the world, according to Guinness World Records.",
-    "The fastest 100m sprint by a cheetah was recorded in 5.95 seconds.",
-    "The oldest living person is Kane Tanaka from Japan."
-]
-```
-
-**Preprocess the documents:**
-
-```python
-processed_docs = preprocess_docs(docs)
-```
-
-**Compute TF-IDF:**
-
-```python
-tfidf_docs = calc_tf_idf_all_docs(processed_docs)
-```
-
-**User's search query:**
-
-```python
-search_question = "Who is the tallest dog in the world?"
-```
-
-**Run the search:**
-
-```python
-top_results = search(search_question, tfidf_docs, docs)
-for idx, res in enumerate(top_results, 1):
-    print(f"{idx}. {res}\n")
-```
-
-**Expected Output:**
-
-```
-1. Zeus is the tallest dog in the world, according to Guinness World Records.
-
-2. The fastest 100m sprint by a cheetah was recorded in 5.95 seconds.
-
-3. The oldest living person is Kane Tanaka from Japan.
-```
-
-**Explanation:**  
-The first result directly answers the query, so it receives the highest score. The remaining documents are less relevant and are ranked lower.
-
----
-````
