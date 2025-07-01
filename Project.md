@@ -1,3 +1,4 @@
+
 ---
 
 # Guinness World Records Search Engine
@@ -225,12 +226,28 @@ def search(search_question, tf_idf_per_doc, docs):
     query_tokens = preprocess_user_query(search_question)
     scores = calc_scores_docs(tf_idf_per_doc, query_tokens)
     return rank_docs(docs, scores, top_n=5)
+```
 
-# Example usage:
-search_question = "Who is the tallest DOG in the world?"
-top_results = search(search_question, tfidf_docs, docs)
-for idx, res in enumerate(top_results, 1):
-    print(f"{idx}. {res}\n")
+---
+
+### Example: Search Engine in Action
+
+```python
+#@title Search Engine:
+search_question = "What is the name of the person with the largest collection of Pepsi cans in the world?" #@param {type:"string"}
+search(search_question, tfidf_docs, docs)
+```
+
+**Sample Output:**
+
+```python
+[
+    "Gary Feng from Canada has a colossal collection of 11308 rare Coca-Cola cans from around the world. Check out some of his favourites 🥤  #cola #cocacola #soda #sodacans #beverages #collector #collection #collectable #guinnessworldrecords #officiallyamazing https://www.instagram.com/p/CVNgDDtDxLr",
+    "Davide Andreani from Italy has a collection of 10,558 @cocacola cans from 87 countries. Davide received his first Coca Cola can back in 1982 when he was just 5 years old, beginning a lifetime's obsession with the soft drink. His record was confirmed on this day in 2013.  Soon after, Davide began collecting the distinctive tins, with his father bringing him home unusual designs when returning from his European business trips.  Today, he searches the globe for can designs which only appeared in shops for a limited time or sometimes never even released to the public, including rare gold and silver coloured cans released in various countries for Christmas and special sporting events🥤 \"The most valuable cans are those produced from the factory for a special moment. Like gold cans produced for plant openings or special anniversaries. But these cans are very limited and very rare,\" the passionate collector explained, ahead of his appearance in our #GWR2015 book with the record title 'Largest collection of soft drink cans - same brand'. _________________________________________  #cocacola #collection #collectable #collector #guinnessworldrecords #officiallyamazing #italy #coke #soda #onthisday https://www.instagram.com/p/BmeZN4xnYDr",
+    "The largest toothpaste collection belongs to a passionate dentist in Alpharetta, Georgia (USA). With over 2,037 kinds of toothpaste, Val Kolpakov has collected tubes from all over the world, including Korea, China, India, Russia, and Japan. His brilliant and exotic collection earned him the GWR title in 2012  #guinnessworldrecords #officiallyamazing #teeth #toothpaste #dental #dentist #collection https://www.instagram.com/p/BHP28tcgYLN",
+    "Meet the @disney superfan who holds the record for the largest collection of Mickey Mouse memorabilia! Today we're exploring the Janet Esteve's collection of 10,210 items on Facebook LIVE. Tune in from 1pm (EST) 10am (PST) 6pm (GMT) - we welcome your questions  #disney #mickeymouse #guinnessworldrecords #officiallyamazing #collectibles #collection #facebooklive https://www.instagram.com/p/BPIS7EaABsq",
+    "The largest collection of @transformersofficial memorabilia is 2,111 items and was achieved by Louis Georgiou from Manchester, UK - as featured in the GWR 2020 book.\u2063 \u2063 Louis started his collection in 2011 after buying some Transformers toys for his son. His collection steadily grew and when he realised the scale of it, he applied for the record 🤖\u2063 \u2063 _____________________________________________\u2063 \u2063 #transformers #autobots #decepticons #collectibles #collection #collector #GWR2020 #guinnessworldrecords #officiallyamazing https://www.instagram.com/p/B6nSOPZhsnZ"
+]
 ```
 
 ---
